@@ -1,4 +1,4 @@
-cmake_minimum_required( VERSION 3.5.0 FATAL_ERROR )
+cmake_minimum_required( VERSION 3.10.0 FATAL_ERROR )
 #=====================================================
 
 project( davrods C )
@@ -20,7 +20,11 @@ include( RequireOutOfSourceBuild )
 
 option( LOG_VERBOSE "Be davrods log more verbose" OFF )
 
-find_package( IRODS ${IRODS_REQ_VERSION} REQUIRED CONFIG )
+find_package( IRODS REQUIRED )
+if( "${IRODS_VERSION}" VERSION_LESS "${IRODS_REQ_VERSION}" )
+    message( FATAL_ERROR "Required iRODS >= ${IRODS_REQ_VERSION}" )
+endif()
+
 message( STATUS "iRODS found" )
 include( ${IRODS_TARGETS_PATH} )
 
