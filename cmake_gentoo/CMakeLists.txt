@@ -20,7 +20,7 @@ include( RequireOutOfSourceBuild )
 
 option( LOG_VERBOSE "Be davrods log more verbose" OFF )
 
-find_package( IRODS ${IRODS_REQ_VERSION} EXACT REQUIRED CONFIG )
+find_package( IRODS ${IRODS_REQ_VERSION} REQUIRED CONFIG )
 message( STATUS "iRODS found" )
 include( ${IRODS_TARGETS_PATH} )
 
